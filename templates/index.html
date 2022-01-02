@@ -22,8 +22,8 @@
       <div class="row">
         <div class="col-lg-12">
           <h2>Latest Mars News</h2>
-          <h3> {{news_title}} </h3>
-          <p> {{news_p}}</p>
+          <h3> {{mars.news_title}} </h3>
+          <p> {{mars.news_p}}</p>
         </div>
       </div>
     </div>
@@ -32,38 +32,48 @@
       <div class="row">
         <div class="col-lg-8">
           <h2>Featured Mars image</h2>
-          <p> {{featured_image_url}} </p>
+          <img src="{{mars.featured_image_url}}" alt="Mars Featured Image">
         </div>
         <div class="col-lg-4">
           <h3>Mars Facts</h3>
-          <a> {{html_mars}} </a>
+          <small> {{mars.html_mars | safe}} </small>
         </div>
-
-
       </div>
     </div>
    
 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="heading text-align: center">Mars Hemispheres</h1>
+        
+    
+          <div>
+          <!-- write a for loop that lists out your data and accesses the values using dot notation. ---> 
+            {% for hemi in mars.mars_hemisphere_images %}
+              <div class="col-lg-4">
+                <div class="card" style="width: 20rem;">
+                  <div class="card-body">
+                    
+                    <img class="card hemi" src= "{{hemi.image_url}}" alt="Mars Hemisphere Photo"/>
+                      <h4 class="card-title"> {{hemi.title}} </h4>
+
+                  </div>
+                </div>
+              </div> 
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+      
+  
+    </div>
     
 
-
-    <h2>Mars Hemispheres</h2>
-
-       <!-- write a for loop that lists out your data and accesses the values using dot notation. -->
-       {% for name in list %}
-       <div class="col-lg-4">
-           <div class="card" style="width: 20rem;">
-               <div class="card-body">
-                 <h2 class="card-title">{{ item.type }}</h2>
-                 <h6 class="card-subtitle mb-2 text-muted">Cost: {{ item.cost }}</h6>
-                 <p class="card-text">Potential Revenue: {{ item.cost * item.stock}}</p>
-               </div>
-             </div>
-         </div>
-         {% endfor %}
-
-    
-
+            
   </div>
 </body>
 
